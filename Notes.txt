@@ -1,1 +1,14 @@
+PID controller is implemented to control steering angle.
+PID::TotalError() -> Line 30 in PID.cpp
+where the integrated crosstrack error (int_CTE) is the sum of all the previous crosstrack errors.This term works to cancel out steering drift.
+
+All the errors terms are updated in PID::UpdateError Lines 23 -> 27
+
+Also added a P controller for throttle/speed.
+
+Finally after many attempts and going through forums, car is able to complete the lap with reduced number of oscillations.
+
+This is how I manually tuned parameters:
+
+Iterations	Kp	Ki	Kd	Result1	-0.0598	0	0	Stopped at red curve2	-0.04	0	0	Stopped in between3	-0.0528	0	0	Going out of lane4	-0.05	0	0	Better but still going out of lane5	-0.05	0	-0.3	Reduced oscillations6	-0.05	0.00001	-0.3	Improved but still going out of the lane7	-0.0558	0.00001	-0.4	Stopped at bridge8	-0.0598	0.00001	-0.5	able to complete the lane but too many oscillations and going out of the lane9	-0.0698	0.00001	-0.6	improved oscillations10	-0.0798	0.00001	-0.85	after bridge car went out of the lane11	-0.0898	0.00001	-1.5	improved but going close the end of lane line12	-0.0898	0.00001	-2	improved, better correction13	-0.095	0.00001	-3.5	better oscillations and able to cover the lane
 
