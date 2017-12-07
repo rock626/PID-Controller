@@ -12,3 +12,7 @@ This is how I manually tuned parameters:
 
 Iterations	Kp	Ki	Kd	Result1	-0.0598	0	0	Stopped at red curve2	-0.04	0	0	Stopped in between3	-0.0528	0	0	Going out of lane4	-0.05	0	0	Better but still going out of lane5	-0.05	0	-0.3	Reduced oscillations6	-0.05	0.00001	-0.3	Improved but still going out of the lane7	-0.0558	0.00001	-0.4	Stopped at bridge8	-0.0598	0.00001	-0.5	able to complete the lane but too many oscillations and going out of the lane9	-0.0698	0.00001	-0.6	improved oscillations10	-0.0798	0.00001	-0.85	after bridge car went out of the lane11	-0.0898	0.00001	-1.5	improved but going close the end of lane line12	-0.0898	0.00001	-2	improved, better correction13	-0.095	0.00001	-3.5	better oscillations and able to cover the lane
 
+Observations:
+Tuning Kp improves cross track error , in other terms how car reacts when going out of the lane.if this is too high, car responds too quickly which lead to too many oscillations.If this is too low, car doesn’t respond and goes out of lane.Kp tries to move car to the center of the lane.Ki(integral term) is added to remove bias or steady state error caused by Kp.
+Once car goes within the lane Kd is added to reduce oscillations (cancels the overshoot caused by Kp)and 
+
